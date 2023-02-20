@@ -102,8 +102,8 @@ class UserViewModel: ObservableObject {
     
     
     //Galle : Delete data
-    func deletePost(parameters : [String : Any]){
-        guard let url = URL(string: prefixeUrl) else { return print("url non trouvei") }
+    func deletePost(parameters : [String : Any], id:Int){
+        guard let url = URL(string: "\(prefixeUrl)/\(id)") else { return print("url non trouvei") }
         let data = try! JSONSerialization.data(withJSONObject: parameters)
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"

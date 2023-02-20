@@ -27,19 +27,36 @@ struct HomeView: View {
                         NavigationLink(destination: DetailsView(item: item),
                                        label: {
                             VStack(alignment: .leading ) {
-                                Text(item.prenom)
+                                HStack {
+                                    Image(systemName: "person")
+                                    Text(item.prenom)
+                                }
                                 Text(item.role).font(.caption).foregroundColor(.gray)
                             }
                             
                         })
 
                     }
-            }.listStyle(InsetListStyle())
+                .onDelete(perform: deletePostssss)
+            }
+            .listStyle(InsetListStyle())
             .navigationTitle("posts")
                 .navigationBarItems(trailing: plusButton)
         }.sheet(isPresented: $isPresentedNewPost, content: {
             NewPostView(isPresented: $isPresentedNewPost, prenom: $prenom, nom: $nom, email: $email, motDePasse: $motDePasse)
         })
+    }
+    
+    private func deletePostssss(indexSet : IndexSet){
+        let id = indexSet.map{userViewModel.users[$0].id}
+        print(id)
+        DispatchQueue.main.async {
+            let parameters : [String :Any] = ["id":id[0]]
+            
+            print(parameters["id"])
+            self.userViewModel.deletePost(parameters: parameters, id: parameters["id"] as! Int)
+            //self.userViewModel.fetchPost()
+        }
     }
     var plusButton: some View{
         Button(action: {
