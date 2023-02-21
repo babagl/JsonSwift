@@ -15,6 +15,7 @@
 		0249530429A11FD200AD7B2A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249530329A11FD200AD7B2A /* UserViewModel.swift */; };
 		0249530629A186A200AD7B2A /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249530529A186A200AD7B2A /* NewPostView.swift */; };
 		0249530829A1AB0200AD7B2A /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249530729A1AB0200AD7B2A /* DetailsView.swift */; };
+		02DDEC2E29A521F500FF7395 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDEC2D29A521F500FF7395 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		0249530329A11FD200AD7B2A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		0249530529A186A200AD7B2A /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
 		0249530729A1AB0200AD7B2A /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		02DDEC2D29A521F500FF7395 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				024952F729A11D9900AD7B2A /* Preview Content */,
 				0249530529A186A200AD7B2A /* NewPostView.swift */,
 				0249530729A1AB0200AD7B2A /* DetailsView.swift */,
+				02DDEC2D29A521F500FF7395 /* LoginView.swift */,
 			);
 			path = TutoYoutube;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				024952F429A11D9800AD7B2A /* ContentView.swift in Sources */,
+				02DDEC2E29A521F500FF7395 /* LoginView.swift in Sources */,
 				0249530429A11FD200AD7B2A /* UserViewModel.swift in Sources */,
 				0249530129A11EB500AD7B2A /* UserModel.swift in Sources */,
 				024952F229A11D9800AD7B2A /* TutoYoutubeApp.swift in Sources */,

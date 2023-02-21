@@ -23,8 +23,10 @@ class UserViewModel: ObservableObject {
         print("func retreive data")
         guard let url = URL(string: prefixeUrl) else { return print("url non trouvei") }
         URLSession.shared.dataTask(with: url){(data, res, error) in
+            let responseComplete = res as? HTTPURLResponse
             if error != nil{
                 print("error", error?.localizedDescription)
+                print(responseComplete)
                 return
             }
             do{
@@ -32,10 +34,12 @@ class UserViewModel: ObservableObject {
                     let result = try JSONDecoder().decode([UserModel].self, from: data)
                     DispatchQueue.main.async {
                         self.users = result
+                        print(responseComplete)
                     }
                 }
             }catch let JsonError{
                 print("fetch json error ", JsonError.localizedDescription)
+                print(responseComplete)
             }
         }.resume()
     }
@@ -61,6 +65,32 @@ class UserViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         print(result)
                         self.users = result 
+                    }
+                }
+            }catch let JsonError{
+                print("fetch json error ", JsonError.localizedDescription)
+            }
+        }.resume()
+    }
+    
+    func ConnexionPost(parameters : [String : Any]){
+        guard let url = URL(string: prefixeUrl) else { return print("url non trouvei") }
+        let data = try! JSONSerialization.data(withJSONObject: parameters)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = data
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        URLSession.shared.dataTask(with: request){(data, res, error) in
+            if error != nil{
+                print("error", error?.localizedDescription)
+                return
+            }
+            do{
+                if let data = data {
+                    let result = try JSONDecoder().decode([UserModel].self, from: data)
+                    DispatchQueue.main.async {
+                        print(result)
+                        self.users = result
                     }
                 }
             }catch let JsonError{
